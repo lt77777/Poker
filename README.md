@@ -1,10 +1,12 @@
 # Night Table — Texas Hold'em
 
-A local, browser-only No-Limit Texas Hold'em table. You sit at a 6-max felt against a handful of bots with different styles. There is no server, no account, and no tracking.
+A local No-Limit Texas Hold'em table. You sit at a 6-max felt against a handful of bots with different styles. There is no server, no account, and no tracking.
 
-The rules live in a **DOM-free TypeScript engine** (`src/engine/`) so a future iOS client can import the same logic.
+The rules live in a **DOM-free TypeScript engine** (`src/engine/` on web, copied into `mobile/src/engine/` for iPhone) so both clients share the same logic.
 
-## How to run
+Live web: https://ancient-chant-tpat.here.now/
+
+## Web
 
 ```
 npm install
@@ -18,15 +20,32 @@ npm test          # engine unit tests
 npm run build     # production bundle
 ```
 
+## iPhone (Expo Go)
+
+Play on a real iPhone with Expo Go — no Mac required for v1.
+
+1. Install **Expo Go** from the App Store.
+2. `cd mobile && npm install`
+3. `npx expo start`
+4. Scan the QR code with the Camera app or Expo Go (same Wi-Fi, or `npx expo start --tunnel`).
+
+```
+cd mobile
+npm test          # copied engine unit tests
+npm run typecheck
+```
+
+This is **not** an App Store / TestFlight build. Expo Go is the v1 path.
+
 ## How to play
 
-1. Choose 2–6 seats (you + bots) and click **Take a seat**.
+1. Choose 2–6 seats (you + bots) and start the table.
 2. Blinds post, two hole cards are dealt, and action starts left of the big blind.
-3. On your turn: **Fold**, **Check** / **Call**, **Raise** (min / half pot / pot / slider), or **All-in**.
+3. On your turn: **Fold**, **Check** / **Call**, **Raise** (min / half pot / pot / amount), or **All-in**.
 4. Streets: preflop → flop (3) → turn (1) → river (1) → showdown.
 5. Broke bots sit out. If you bust, **Rebuy** for a full stack or start a **New table**.
 
-Keyboard: `F` fold · `C` check/call · `R` raise · `A` all-in · `Enter` next hand · `1`/`2`/`3` half-pot / pot / shove.
+Web keyboard: `F` fold · `C` check/call · `R` raise · `A` all-in · `Enter` next hand · `1`/`2`/`3` half-pot / pot / shove.
 
 ## Table stakes
 
@@ -50,6 +69,7 @@ They use hole-card strength, made-hand category, and simple flush/straight-draw 
 ## Layout
 
 - `src/engine/` — pure TS: cards, evaluator, pots, betting, bots
-- `src/ui/` — React table, seats, cards, action bar
+- `src/ui/` — React (web) table, seats, cards, action bar
+- `mobile/` — Expo + React Native iPhone app (Night Table)
 
 MIT licensed.
