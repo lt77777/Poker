@@ -1,0 +1,17 @@
+export const colors = {
+  felt: '#0c3b2e',
+  feltDeep: '#07261e',
+  rail: '#5a3826',
+  railHi: '#8a5a3b',
+  gold: '#e4c37a',
+  gold2: '#b8893a',
+  ink: '#e8e4d9',
+  muted: '#9aa394',
+  danger: '#c44949',
+  warn: '#d9892b',
+  seat: 'rgba(8, 14, 12, 0.82)',
+  bg: '#070808',
+  cardFace: '#f4efe4',
+  red: '#c0392b',
+  black: '#1a1a1a',
+} as const;

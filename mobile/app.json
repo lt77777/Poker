@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "Night Table",
+    "slug": "night-table",
+    "scheme": "nighttable",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#070808",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.lawrence.nighttable"
+    },
+    "android": {
+      "package": "com.lawrence.nighttable"
+    }
+  }
+}
